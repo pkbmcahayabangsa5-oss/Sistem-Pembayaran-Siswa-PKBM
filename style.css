@@ -1,0 +1,1306 @@
+/* ======================================================
+   RESET & DASAR
+   ====================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f7fb;
+    color: #263238;
+    min-height: 100vh;
+}
+
+
+/* ======================================================
+   SIDEBAR
+   ====================================================== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 245px;
+    height: 100vh;
+
+    background: linear-gradient(
+        180deg,
+        #2563eb 0%,
+        #1e40af 100%
+    );
+
+    padding: 28px 18px;
+
+    color: white;
+
+    box-shadow:
+        4px 0 20px rgba(15, 23, 42, 0.10);
+
+    z-index: 1000;
+}
+
+.sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 35px;
+    padding: 0 5px;
+}
+
+.sidebar .brand-logo {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+.sidebar .brand-text {
+    min-width: 0;
+}
+
+.sidebar .brand-text h2 {
+    margin: 0 0 4px 0;
+    padding: 0;
+    text-align: left;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    color: white;
+    white-space: nowrap;
+}
+
+.sidebar .brand-text small {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+    color: #dbeafe;
+}
+.sidebar button {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    color: #dbeafe;
+
+    padding: 14px 16px;
+
+    margin-bottom: 7px;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    transform: translateX(2px);
+}
+
+.sidebar button.aktif {
+    background: white;
+
+    color: #1e40af;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 4px 12px rgba(15, 23, 42, 0.10);
+}
+
+
+/* ======================================================
+   KONTEN UTAMA
+   ====================================================== */
+
+.main {
+    margin-left: 245px;
+
+    padding: 32px;
+
+    min-height: 100vh;
+}
+
+
+/* ======================================================
+   HEADER
+   ====================================================== */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    color: #172554;
+
+    margin-bottom: 6px;
+}
+
+.header p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+.header > div:last-child {
+    background: white;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.06);
+
+    border:
+        1px solid #eef2f7;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+/* ======================================================
+   KARTU DASHBOARD
+   ====================================================== */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.card {
+    position: relative;
+
+    overflow: hidden;
+
+    background: white;
+
+    padding: 24px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(15, 23, 42, 0.06);
+
+    border:
+        1px solid #eef2f7;
+
+    min-height: 135px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(15, 23, 42, 0.09);
+}
+
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    right: -25px;
+    bottom: -25px;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    opacity: 0.9;
+}
+
+.card:nth-child(1)::after {
+    background: #dbeafe;
+}
+
+.card:nth-child(2)::after {
+    background: #dcfce7;
+}
+
+.card:nth-child(3)::after {
+    background: #fef3c7;
+}
+
+.card:nth-child(4)::after {
+    background: #fee2e2;
+}
+
+.card h3 {
+    position: relative;
+
+    z-index: 2;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 12px;
+}
+
+.card .angka {
+    position: relative;
+
+    z-index: 2;
+
+    color: #172554;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    word-break: break-word;
+}
+
+
+/* ======================================================
+   BOX PUTIH / CARD BESAR
+   ====================================================== */
+
+.table-box {
+    background: white;
+
+    padding: 26px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(15, 23, 42, 0.06);
+
+    border:
+        1px solid #eef2f7;
+
+    margin-bottom: 25px;
+}
+
+.table-box h2 {
+    font-size: 19px;
+
+    color: #172554;
+
+    margin-bottom: 22px;
+
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   TABLE
+   ====================================================== */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+}
+
+th {
+    background: #f8fafc;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    padding: 15px 12px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid #e2e8f0;
+
+    white-space: nowrap;
+}
+
+td {
+    padding: 16px 12px;
+
+    font-size: 13px;
+
+    color: #475569;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition:
+        background 0.15s ease;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ======================================================
+   STATUS UMUM
+   ====================================================== */
+
+.status {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.status.tidak-aktif {
+    background: #fee2e2;
+
+    color: #b91c1c;
+}
+
+
+/* ======================================================
+   STATUS REKAP SPP
+   ====================================================== */
+
+.status.lunas {
+    background: #dcfce7;
+
+    color: #15803d;
+}
+
+.status.belum-bayar {
+    background: #fee2e2;
+
+    color: #dc2626;
+}
+
+.status.belum-lunas {
+    background: #fef3c7;
+
+    color: #b45309;
+}
+
+
+/* ======================================================
+   AREA TOMBOL SISWA
+   ====================================================== */
+
+.aksi-siswa {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+
+/* ======================================================
+   TOMBOL TAMBAH SISWA
+   ====================================================== */
+
+.tombol-tambah {
+    border: none;
+
+    background: rgb(245, 190, 11);
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    margin-bottom: 0;
+}
+
+.tombol-tambah:hover {
+    background: #d97706;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px
+        rgba(245, 158, 11, 0.22);
+}
+
+
+/* ======================================================
+   TOMBOL DATA AWAL
+   ====================================================== */
+
+.tombol-data-awal {
+    border: none;
+
+    background: #276cf6;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tombol-data-awal:hover {
+    background: #113b5e;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px
+        rgba(15, 118, 110, 0.20);
+}
+
+
+/* ======================================================
+   FORM
+   ====================================================== */
+
+.form-container {
+    background: #f8fafc;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+.form-container h2 {
+    color: #1e3a8a;
+
+    margin-bottom: 20px;
+
+    font-size: 19px;
+
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   GRID FORM
+   ====================================================== */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #475569;
+
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    padding: 12px;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.08);
+}
+
+.form-group small {
+    margin-top: 7px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* ======================================================
+   TOMBOL FORM
+   ====================================================== */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+
+/* ======================================================
+   TOMBOL BATAL
+   ====================================================== */
+
+.tombol-batal {
+    padding: 11px 18px;
+
+    border:
+        1px solid #cbd5e1;
+
+    background: white;
+
+    color: #475569;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.tombol-batal:hover {
+    background: #f1f5f9;
+
+    border-color: #94a3b8;
+}
+
+
+/* ======================================================
+   TOMBOL SIMPAN
+   ====================================================== */
+
+.tombol-simpan {
+    padding: 11px 18px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tombol-simpan:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px
+        rgba(37, 99, 235, 0.18);
+}
+
+
+/* ======================================================
+   TOMBOL EDIT
+   ====================================================== */
+
+.tombol-edit {
+    border: none;
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-right: 5px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.tombol-edit:hover {
+    background: #bfdbfe;
+
+    color: #1e40af;
+}
+
+
+/* ======================================================
+   TOMBOL HAPUS
+   ====================================================== */
+
+.tombol-hapus {
+    border: none;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.tombol-hapus:hover {
+    background: #fecaca;
+
+    color: #991b1b;
+}
+
+
+/* ======================================================
+   REKAP SUMMARY
+   ====================================================== */
+
+.rekap-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.summary-box {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid #eef2f7;
+
+    box-shadow:
+        0 5px 20px
+        rgba(15, 23, 42, 0.05);
+
+    min-height: 105px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.summary-box:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(15, 23, 42, 0.08);
+}
+
+.summary-box span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+.summary-box strong {
+    font-size: 22px;
+
+    color: #172554;
+
+    line-height: 1.3;
+
+    word-break: break-word;
+}
+
+
+/* ======================================================
+   JUDUL REKAP
+   ====================================================== */
+
+.judul-rekap {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.judul-rekap h2 {
+    margin-bottom: 0;
+}
+
+
+/* ======================================================
+   TOMBOL CETAK
+   ====================================================== */
+
+.tombol-cetak {
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tombol-cetak:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px
+        rgba(37, 99, 235, 0.18);
+}
+
+
+/* ======================================================
+   LAPORAN
+   ====================================================== */
+
+.laporan-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.laporan-item {
+    background: #f8fafc;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid #e2e8f0;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.laporan-item:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(15, 23, 42, 0.05);
+}
+
+.laporan-item span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+.laporan-item strong {
+    color: #172554;
+
+    font-size: 22px;
+
+    word-break: break-word;
+}
+
+
+/* ======================================================
+   PESAN KOSONG
+   ====================================================== */
+
+.pesan-kosong {
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    padding: 20px;
+}
+
+
+/* ======================================================
+   TABLE SCROLL
+   ====================================================== */
+
+.table-scroll {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 8px;
+}
+
+
+/* ======================================================
+   SCROLLBAR
+   ====================================================== */
+
+.table-scroll::-webkit-scrollbar {
+    height: 7px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+
+    border-radius: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+
+    border-radius: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* ======================================================
+   SELECTION
+   ====================================================== */
+
+::selection {
+    background: #bfdbfe;
+
+    color: #172554;
+}
+
+
+/* ======================================================
+   RESPONSIVE TABLET
+   ====================================================== */
+
+@media (max-width: 1200px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .rekap-summary {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* ======================================================
+   RESPONSIVE 1000PX
+   ====================================================== */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main {
+        margin-left: 220px;
+
+        padding: 25px;
+    }
+
+    .cards {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .laporan-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* ======================================================
+   RESPONSIVE 700PX
+   ====================================================== */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        padding: 18px;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 18px;
+    }
+
+    .sidebar button {
+        margin-bottom: 5px;
+    }
+
+    .main {
+        margin-left: 0;
+
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        margin-bottom: 22px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rekap-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .laporan-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-box {
+        padding: 18px;
+    }
+
+    .form-container {
+        padding: 18px;
+    }
+
+    .judul-rekap {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .tombol-cetak {
+        width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    table {
+        min-width: 750px;
+    }
+
+}
+
+
+/* ======================================================
+   RESPONSIVE 450PX
+   ====================================================== */
+
+@media (max-width: 450px) {
+
+    .main {
+        padding: 14px;
+    }
+
+    .table-box {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card .angka {
+        font-size: 22px;
+    }
+
+    .aksi-siswa {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tombol-tambah,
+    .tombol-data-awal {
+        width: 100%;
+    }
+
+}
+
+/* ======================================================
+   BACKUP & RESTORE
+   ====================================================== */
+
+.backup-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.tombol-backup {
+    border: none;
+    background: #2563eb;
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.tombol-backup:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+
+.tombol-restore {
+    display: inline-block;
+
+    background: #f59e0b;
+    color: white;
+
+    padding: 11px 18px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.tombol-restore:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+}
+
+
+@media (max-width: 700px) {
+
+    .backup-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tombol-backup,
+    .tombol-restore {
+        width: 100%;
+        text-align: center;
+    }
+
+}

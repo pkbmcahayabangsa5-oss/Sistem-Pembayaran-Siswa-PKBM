@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Aplikasi pembayaran SPP siswa">
+
+    <title>
+        Aplikasi Pembayaran SPP
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+    <div class="brand">
+         <img src="images/logo.png" alt="Logo Cahaya Bangsa" class="brand-logo">
+
+    <div class="brand-text">
+        <h2>PKBM CAHAYA BANGSA</h2>
+        <small>Sistem Pembayaran Siswa</small>
+    </div>
+</div>
+
+
+        <button
+            class="aktif"
+            onclick="
+                tampilkanHalaman('dashboard');
+                aktifkanMenu(this)
+            ">
+
+            Dashboard
+
+        </button>
+
+
+        <button
+            onclick="
+                tampilkanHalaman('siswa');
+                aktifkanMenu(this)
+            ">
+
+            Data Siswa
+
+        </button>
+
+
+        <button
+            onclick="
+                tampilkanHalaman('pembayaran');
+                aktifkanMenu(this)
+            ">
+
+            Pembayaran
+
+        </button>
+
+
+        <button
+            onclick="
+                tampilkanHalaman('rekap');
+                aktifkanMenu(this)
+            ">
+
+            Rekap Pembayaran
+
+        </button>
+
+
+        <button
+            onclick="
+                tampilkanHalaman('laporan');
+                aktifkanMenu(this)
+            ">
+
+            Laporan
+
+        </button>
+
+    </aside>
+
+
+
+    <!-- ==================================================
+         KONTEN UTAMA
+    ================================================== -->
+
+    <main class="main">
+
+
+        <!-- ==================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+            id="dashboard"
+            class="halaman">
+
+
+            <div class="header">
+
+                <div>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Ringkasan pembayaran siswa
+                    </p>
+
+                </div>
+
+
+                <div>
+                    Admin
+                </div>
+
+            </div>
+
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <h3>
+                        Jumlah Siswa
+                    </h3>
+
+                    <div
+                        class="angka"
+                        id="jumlahSiswaDashboard">
+
+                        0
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Pembayaran Hari Ini
+                    </h3>
+
+                    <div
+                        class="angka"
+                        id="pembayaranHariIni">
+
+                        Rp0
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Pembayaran Bulan Ini
+                    </h3>
+
+                    <div
+                        class="angka"
+                        id="pembayaranBulanIni">
+
+                        Rp0
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Total Transaksi
+                    </h3>
+
+                    <div
+                        class="angka"
+                        id="jumlahTransaksi">
+
+                        0
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PEMBAYARAN TERBARU -->
+
+            <div class="table-box">
+
+                <h2>
+                    Pembayaran Terbaru
+                </h2>
+
+
+                <div class="table-scroll">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Nama Siswa
+                                </th>
+
+                                <th>
+                                    Jenis
+                                </th>
+
+                                <th>
+                                    Nominal
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabelPembayaranTerbaru">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <p
+                    id="pesanPembayaranTerbaru"
+                    class="pesan-kosong">
+
+                    Belum ada transaksi pembayaran.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             DATA SISWA
+        ================================================== -->
+
+        <section
+            id="siswa"
+            class="halaman"
+            style="display:none;">
+
+
+            <div class="header">
+
+                <div>
+
+                    <h1>
+                        Data Siswa
+                    </h1>
+
+                    <p>
+                        Kelola data siswa yang terdaftar
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-box">
+
+
+                <!-- TOMBOL -->
+
+                <div class="aksi-siswa">
+
+
+                    <button
+                        type="button"
+                        class="tombol-tambah"
+                        onclick="tampilkanFormSiswa()">
+
+                        + Tambah Siswa
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="tombol-data-awal"
+                        onclick="masukkanDataAwal()">
+
+                        Data Awal 20 Siswa
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- FORM SISWA -->
+
+                <div
+                    id="formSiswa"
+                    class="form-container"
+                    style="display:none;">
+
+
+                    <h2
+                        id="judulFormSiswa">
+
+                        Tambah Siswa
+
+                    </h2>
+
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="namaSiswa">
+
+                                Nama Siswa
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="namaSiswa"
+                                placeholder="Masukkan nama siswa"
+                                autocomplete="off">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="nisSiswa">
+
+                                NIS
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nisSiswa"
+                                placeholder="Masukkan NIS"
+                                autocomplete="off">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="programSiswa">
+
+                                Program
+
+                            </label>
+
+                            <select
+                                id="programSiswa">
+
+                                <option value="">
+                                    Pilih Program
+                                </option>
+
+                                <option value="Paket A">
+                                    Paket A
+                                </option>
+
+                                <option value="Paket B">
+                                    Paket B
+                                </option>
+
+                                <option value="Paket C">
+                                    Paket C
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="kelasSiswa">
+
+                                Kelas
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="kelasSiswa"
+                                placeholder="Contoh: 4"
+                                autocomplete="off">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="sppSiswa">
+
+                                SPP/Bulan
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="sppSiswa"
+                                placeholder="Contoh: 250000"
+                                min="0"
+                                inputmode="numeric">
+
+                            <small>
+
+                                Masukkan nominal
+                                SPP setiap bulan.
+
+                            </small>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="statusSiswa">
+
+                                Status
+
+                            </label>
+
+                            <select
+                                id="statusSiswa">
+
+                                <option value="Aktif">
+                                    Aktif
+                                </option>
+
+                                <option value="Tidak Aktif">
+                                    Tidak Aktif
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+
+                        <button
+                            type="button"
+                            class="tombol-batal"
+                            onclick="batalFormSiswa()">
+
+                            Batal
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tombol-simpan"
+                            id="tombolSimpanSiswa"
+                            onclick="simpanSiswa()">
+
+                            Simpan Siswa
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENCARIAN -->
+
+                <div class="filter-siswa">
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="pencarianSiswa">
+
+                            Cari Siswa
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="pencarianSiswa"
+                            placeholder="Cari nama atau NIS..."
+                            oninput="tampilkanDataSiswa()"
+                            autocomplete="off">
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="filterStatusSiswa">
+
+                            Status
+
+                        </label>
+
+                        <select
+                            id="filterStatusSiswa"
+                            onchange="tampilkanDataSiswa()">
+
+                            <option value="Semua">
+                                Semua Status
+                            </option>
+
+                            <option value="Aktif">
+                                Aktif
+                            </option>
+
+                            <option value="Tidak Aktif">
+                                Tidak Aktif
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TABEL SISWA -->
+
+                <div class="table-scroll">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    NIS
+                                </th>
+
+                                <th>
+                                    Nama Siswa
+                                </th>
+
+                                <th>
+                                    Program
+                                </th>
+
+                                <th>
+                                    Kelas
+                                </th>
+
+                                <th>
+                                    SPP/Bulan
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabelSiswa">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <p
+                    id="pesanSiswa"
+                    class="pesan-kosong">
+
+                    Belum ada data siswa.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             PEMBAYARAN
+        ================================================== -->
+
+        <section
+            id="pembayaran"
+            class="halaman"
+            style="display:none;">
+
+
+            <div class="header">
+
+                <div>
+
+                    <h1>
+                        Pembayaran
+                    </h1>
+
+                    <p>
+                        Input pembayaran siswa
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-box">
+
+
+                <h2>
+                    Input Pembayaran
+                </h2>
+
+
+
+                <div class="form-container">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- SISWA -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="pembayaranSiswa">
+
+                                Nama Siswa
+
+                            </label>
+
+                            <select
+                                id="pembayaranSiswa"
+                                onchange="
+                                    updateNominalPembayaran()
+                                ">
+
+                                <option value="">
+                                    Pilih Nama Siswa
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- JENIS -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="jenisPembayaran">
+
+                                Jenis Pembayaran
+
+                            </label>
+
+                            <select
+                                id="jenisPembayaran"
+                                onchange="
+                                    updateNominalPembayaran()
+                                ">
+
+                                <option value="">
+                                    Pilih Jenis Pembayaran
+                                </option>
+
+                                <option value="SPP">
+                                    SPP
+                                </option>
+
+                                <option value="Uang Pendampingan">
+                                    Uang Pendampingan
+                                </option>
+
+                                <option value="Kegiatan">
+                                    Kegiatan
+                                </option>
+
+                                <option value="Lainnya">
+                                    Lainnya
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- TANGGAL -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="tanggalPembayaran">
+
+                                Tanggal Pembayaran
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="tanggalPembayaran">
+
+                        </div>
+
+
+
+                        <!-- BULAN -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="bulanTagihan">
+
+                                Bulan Tagihan SPP
+
+                            </label>
+
+                            <input
+                                type="month"
+                                id="bulanTagihan"
+                                onchange="
+                                    updateNominalPembayaran()
+                                ">
+
+                            <small>
+
+                                Digunakan khusus
+                                untuk pembayaran SPP.
+
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- NOMINAL -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="nominalPembayaran">
+
+                                Nominal Pembayaran
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="nominalPembayaran"
+                                placeholder="Nominal otomatis"
+                                min="0"
+                                inputmode="numeric">
+
+                            <small
+                                id="infoNominalSPP">
+
+                                Nominal akan terisi otomatis
+                                untuk pembayaran SPP.
+
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- KETERANGAN -->
+
+                        <div class="form-group">
+
+                            <label
+                                for="keteranganPembayaran">
+
+                                Keterangan
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="keteranganPembayaran"
+                                placeholder="Contoh: SPP September 2026"
+                                autocomplete="off">
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+
+                        <button
+                            type="button"
+                            class="tombol-batal"
+                            onclick="resetPembayaran()">
+
+                            Batal
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="tombol-simpan"
+                            onclick="simpanPembayaran()">
+
+                            Simpan Pembayaran
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             REKAP
+        ================================================== -->
+
+        <section
+            id="rekap"
+            class="halaman"
+            style="display:none;">
+
+
+            <div class="header">
+
+                <div>
+
+                    <h1>
+                        Rekap Pembayaran
+                    </h1>
+
+                    <p>
+                        Rekap SPP dan seluruh
+                        transaksi pembayaran
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PILIH BULAN -->
+
+            <div class="table-box">
+
+                <div class="form-group">
+
+                    <label
+                        for="bulanRekap">
+
+                        Pilih Bulan SPP
+
+                    </label>
+
+                    <input
+                        type="month"
+                        id="bulanRekap"
+                        onchange="
+                            tampilkanRekapSPP()
+                        ">
+
+                    <small>
+
+                        Pilih bulan untuk melihat
+                        status pembayaran siswa.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RINGKASAN -->
+
+            <div class="rekap-summary">
+
+
+                <div class="summary-box">
+
+                    <span>
+                        Total Tagihan
+                    </span>
+
+                    <strong
+                        id="totalTagihanSPP">
+
+                        Rp0
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-box">
+
+                    <span>
+                        Sudah Dibayar
+                    </span>
+
+                    <strong
+                        id="totalTerbayarSPP">
+
+                        Rp0
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-box">
+
+                    <span>
+                        Sisa Tagihan
+                    </span>
+
+                    <strong
+                        id="totalSisaSPP">
+
+                        Rp0
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="summary-box">
+
+                    <span>
+                        Siswa Belum Bayar
+                    </span>
+
+                    <strong
+                        id="jumlahBelumBayarSPP">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- REKAP SPP -->
+
+            <div class="table-box">
+
+
+                <div class="judul-rekap">
+
+
+                    <div>
+
+                        <h2>
+                            Rekap SPP Bulanan
+                        </h2>
+
+
+                        <select
+                            id="filterStatusSPP"
+                            onchange="
+                                tampilkanRekapSPP()
+                            ">
+
+                            <option value="Semua">
+                                Semua Status
+                            </option>
+
+                            <option value="Lunas">
+                                Lunas
+                            </option>
+
+                            <option value="Belum Lunas">
+                                Belum Lunas
+                            </option>
+
+                            <option value="Belum Bayar">
+                                Belum Bayar
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="tombol-cetak"
+                        onclick="cetakRekapSPP()">
+
+                        Cetak Rekap
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="table-scroll">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    NIS
+                                </th>
+
+                                <th>
+                                    Nama Siswa
+                                </th>
+
+                                <th>
+                                    SPP/Bulan
+                                </th>
+
+                                <th>
+                                    Terbayar
+                                </th>
+
+                                <th>
+                                    Sisa
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabelRekapSPP">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <p
+                    id="pesanRekapSPP"
+                    class="pesan-kosong">
+
+                    Silakan pilih bulan SPP.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- SELURUH TRANSAKSI -->
+
+            <div class="table-box">
+
+
+                <h2>
+                    Seluruh Transaksi Pembayaran
+                </h2>
+
+
+                <div class="table-scroll">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Nama Siswa
+                                </th>
+
+                                <th>
+                                    Jenis Pembayaran
+                                </th>
+
+                                <th>
+                                    Nominal
+                                </th>
+
+                                <th>
+                                    Keterangan
+                                </th>
+
+                                <th>
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="tabelPembayaran">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <p
+                    id="pesanRekap"
+                    class="pesan-kosong">
+
+                    Belum ada data pembayaran.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             LAPORAN
+        ================================================== -->
+
+        <section
+            id="laporan"
+            class="halaman"
+            style="display:none;">
+
+
+            <div class="header">
+
+                <div>
+
+                    <h1>
+                        Laporan
+                    </h1>
+
+                    <p>
+                        Ringkasan pembayaran siswa
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RINGKASAN LAPORAN -->
+
+            <div class="table-box">
+
+                <h2>
+                    Ringkasan Laporan
+                </h2>
+
+
+                <div class="laporan-grid">
+
+
+                    <div class="laporan-item">
+
+                        <span>
+                            Jumlah Siswa
+                        </span>
+
+                        <strong
+                            id="jumlahSiswaLaporan">
+
+                            0
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="laporan-item">
+
+                        <span>
+                            Total Transaksi
+                        </span>
+
+                        <strong
+                            id="transaksiLaporan">
+
+                            0
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="laporan-item">
+
+                        <span>
+                            Total Pemasukan
+                        </span>
+
+                        <strong
+                            id="pemasukanLaporan">
+
+                            Rp0
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 BACKUP & RESTORE
+            ================================================== -->
+
+            <div class="table-box">
+
+
+                <h2>
+                    Backup & Restore Data
+                </h2>
+
+
+                <p
+                    style="
+                        color:#64748b;
+                        font-size:13px;
+                        line-height:1.6;
+                        margin-bottom:18px;
+                    ">
+
+                    Gunakan backup untuk menyimpan
+                    salinan data siswa dan seluruh
+                    transaksi pembayaran.
+
+                </p>
+
+
+                <div class="backup-actions">
+
+
+                    <!-- DOWNLOAD -->
+
+                    <button
+                        type="button"
+                        class="tombol-backup"
+                        onclick="backupData()">
+
+                        Download Backup
+
+                    </button>
+
+
+
+                    <!-- RESTORE -->
+
+                    <label
+                        for="fileRestore"
+                        class="tombol-restore">
+
+                        Restore Data
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="fileRestore"
+                        accept=".json"
+                        onchange="restoreData(event)"
+                        style="display:none;">
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script
+        src="script.js">
+    </script>
+
+
+</body>
+
+</html>
